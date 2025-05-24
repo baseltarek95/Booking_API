@@ -1,0 +1,6 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+Invalid-Missing Fields,1,473,473,473,0.00,100.000%,2.11416,1.85,0.56,896.0
+Invalid Date format,1,421,421,421,0.00,100.000%,2.37530,2.54,0.74,1096.0
+Invalid-Duplicated fields,2,275,142,409,133.50,100.000%,3.62319,3.92,1.10,1108.0
+Valid Request,97,467,408,652,42.83,0.000%,3.32010,3.58,0.92,1104.4
+TOTAL,101,463,142,652,53.41,3.960%,3.35582,3.61,0.94,1102.3

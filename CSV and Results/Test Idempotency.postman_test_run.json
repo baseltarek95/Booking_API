@@ -1,0 +1,84 @@
+{
+	"id": "5cd1410b-8714-4cb7-b705-8c4a4bdf4bac",
+	"name": "Test Idempotency",
+	"timestamp": "2025-05-24T16:08:01.688Z",
+	"collection_id": "45061434-a219e913-4db3-4c0a-906c-7221a4d1a53d",
+	"folder_id": 0,
+	"environment_id": "45061434-18e2b725-2044-428f-add1-358dd66ad4af",
+	"totalPass": 1,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-24T16:08:00.804Z",
+	"totalFail": 1,
+	"results": [
+		{
+			"id": "d85c5624-7ad7-4c31-ba48-2a0171617bb6",
+			"name": "Duplicate Booking",
+			"url": "https://682d014e4fae1889475497b9.mockapi.io//v1/api/senior-qc-test/booking/places",
+			"time": 153,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201 or 409": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201 or 409": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				153
+			],
+			"allTests": [
+				{
+					"Status code is 201 or 409": true
+				}
+			]
+		},
+		{
+			"id": "904799a0-8de8-4fff-a23d-81dcb7b53dc4",
+			"name": "Send Duplicate Booking Again",
+			"url": "https://682d014e4fae1889475497b9.mockapi.io//v1/api/senior-qc-test/booking/places",
+			"time": 146,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 409": false
+			},
+			"testPassFailCounts": {
+				"Status code is 409": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				146
+			],
+			"allTests": [
+				{
+					"Status code is 409": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 299,
+	"collection": {
+		"requests": [
+			{
+				"id": "d85c5624-7ad7-4c31-ba48-2a0171617bb6",
+				"method": "POST"
+			},
+			{
+				"id": "904799a0-8de8-4fff-a23d-81dcb7b53dc4",
+				"method": "POST"
+			}
+		]
+	}
+}

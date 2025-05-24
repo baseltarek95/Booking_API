@@ -1,0 +1,158 @@
+{
+	"id": "b5e37bb3-3a4a-4ad1-999e-3b5c04c707af",
+	"name": "Booking API Tests",
+	"timestamp": "2025-05-24T17:34:52.284Z",
+	"collection_id": "45061434-a2f39faa-4935-43a3-8206-3240e8de477b",
+	"folder_id": 0,
+	"environment_id": "45061434-18e2b725-2044-428f-add1-358dd66ad4af",
+	"totalPass": 3,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-24T17:34:49.907Z",
+	"totalFail": 3,
+	"results": [
+		{
+			"id": "2ece76f1-09fc-42e4-9d70-f5bea5a53f2f",
+			"name": "TC01 Valid Payload",
+			"url": "https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places",
+			"time": 917,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response schema is valid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response schema is valid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				917
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response schema is valid": true
+				}
+			]
+		},
+		{
+			"id": "6f4262dc-4804-436d-9ba6-ab15ec5d2296",
+			"name": "TC02 Empty-String Fields",
+			"url": "https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places",
+			"time": 149,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Empty-strings should be rejected": false
+			},
+			"testPassFailCounts": {
+				"Empty-strings should be rejected": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				149
+			],
+			"allTests": [
+				{
+					"Empty-strings should be rejected": false
+				}
+			]
+		},
+		{
+			"id": "abc35328-56e1-413b-9c51-bd5ce745b95e",
+			"name": "TC03 Invalid Date format type",
+			"url": "https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places",
+			"time": 149,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status is 400": false,
+				"Error mentions date format": false
+			},
+			"testPassFailCounts": {
+				"Status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Error mentions date format": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				149
+			],
+			"allTests": [
+				{
+					"Status is 400": false,
+					"Error mentions date format": false
+				}
+			]
+		},
+		{
+			"id": "36635a62-e2f2-42d3-87f9-2442d709850b",
+			"name": "TC04 Large & Special Characters",
+			"url": "https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places",
+			"time": 154,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status is 2xx or 400": true
+			},
+			"testPassFailCounts": {
+				"Status is 2xx or 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				154
+			],
+			"allTests": [
+				{
+					"Status is 2xx or 400": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1369,
+	"collection": {
+		"requests": [
+			{
+				"id": "2ece76f1-09fc-42e4-9d70-f5bea5a53f2f",
+				"method": "POST"
+			},
+			{
+				"id": "6f4262dc-4804-436d-9ba6-ab15ec5d2296",
+				"method": "POST"
+			},
+			{
+				"id": "abc35328-56e1-413b-9c51-bd5ce745b95e",
+				"method": "POST"
+			},
+			{
+				"id": "36635a62-e2f2-42d3-87f9-2442d709850b",
+				"method": "POST"
+			}
+		]
+	}
+}

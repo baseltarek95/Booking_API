@@ -1,0 +1,10 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1748104743042,567,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1101,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,566,0,423
+1748104744002,188,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1103,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,188,0,0
+1748104744198,144,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1102,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,144,0,0
+1748104744345,172,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1103,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,172,0,0
+1748104744519,147,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1103,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,147,0,0
+1748104744668,155,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1102,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,155,0,0
+1748104744825,150,Valid Post Request,201,Created,Thread Group 1-1,text,true,,1101,285,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,150,0,0
+1748104744977,150,Get Request,200,OK,Thread Group 1-1,text,true,,2477,205,1,1,https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking/places,150,0,0
+1748104745210,4,Debug Sampler,200,OK,Thread Group 1-1,text,true,,700,0,1,1,null,0,0,0

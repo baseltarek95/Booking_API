@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "a219e913-4db3-4c0a-906c-7221a4d1a53d",
+		"name": "Booking Tests",
+		"description": "Booking API test collection for valid, invalid, edge, and duplicate cases.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "45061434",
+		"_collection_link": "https://basel-3230671.postman.co/workspace/basel's-Workspace~6a959c3d-763c-4cd9-8d45-160866bc1e73/collection/45061434-a219e913-4db3-4c0a-906c-7221a4d1a53d?action=share&source=collection_link&creator=45061434"
+	},
+	"item": [
+		{
+			"name": "Valid Payloads",
+			"item": [
+				{
+					"name": "Create Valid Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"pm.test(\"Response schema is valid\", function () {",
+									"    pm.response.to.have.jsonSchema({",
+									"        type: \"object\",",
+									"        properties: {",
+									"            id: { type: \"string\" },",
+									"            place_code: { type: \"string\" },",
+									"            place_name: { type: \"string\" },",
+									"            place_image: { type: \"string\" },",
+									"            description: { type: \"string\" }",
+									"        },",
+									"        required: [\"id\", \"place_code\", \"place_name\", \"place_image\", \"description\"]",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": \"{{$randomInt}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Valid Booking Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"pm.test(\"Response schema is valid\", function () {",
+									"    pm.response.to.have.jsonSchema({",
+									"        type: \"object\",",
+									"        properties: {",
+									"            id: { type: \"string\" },",
+									"            place_code: { type: \"string\" },",
+									"            place_name: { type: \"string\" },",
+									"            place_image: { type: \"string\" },",
+									"            description: { type: \"string\" }",
+									"        },",
+									"        required: [\"id\", \"place_code\", \"place_name\", \"place_image\", \"description\"]",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": \"{{$randomInt}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invalid Payloads",
+			"item": [
+				{
+					"name": "Missing place_code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is not 201\", function () {",
+									"    pm.expect(pm.response.code).not.eql(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"place_code\": \"\",\r\n \"place_name\": \"\" \r\n}"
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Field Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is not 201\", function () {",
+									"    pm.expect(pm.response.code).not.eql(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": 12345\n}"
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edge Cases",
+			"item": [
+				{
+					"name": "Special Characters place_code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.expect([200,201]).to.include(pm.response.code);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": \"!@#$%^&*()\"\n}"
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				},
+				{
+					"name": "Large place_code",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"longString\", \"x\".repeat(1000));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.expect([200,201]).to.include(pm.response.code);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": \"{{longString}}\"\n}"
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Duplicate Bookings",
+			"item": [
+				{
+					"name": "Duplicate Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 or 409\", function () {",
+									"    pm.expect([201,409]).to.include(pm.response.code);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": \"duplicate_test\"\n}"
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				},
+				{
+					"name": "Send Duplicate Booking Again",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 or 409\", function () {",
+									"    pm.expect([201,409]).to.include(pm.response.code);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"place_code\": \"duplicate_test\"\n}"
+						},
+						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://682d014e4fae1889475497b9.mockapi.io/",
+			"type": "string"
+		}
+	]
+}
