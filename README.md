@@ -44,4 +44,4 @@ Run the Postman collection in the Test_Idempotency folder to verify that duplica
 Database Consistency Testing:
 Use the JMeter test plan and payload files located in the Database_Testing folder to validate that the number of successful booking creations matches the total records retrieved (no lost or missed entries).
 
-Test results and execution reports are available in the CSV_and_Results folder (Test Idempotency.postman_test_run.json, Database consistency result1.jtl, summary CSV files).
+Test results and execution reports are available in the CSV_and_Results folder (Test Idempotency.postman_test_run.json, Database consistency result1.jtl, Load Test result.jtl).
