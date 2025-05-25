@@ -1,337 +1,277 @@
 {
 	"info": {
-		"_postman_id": "a219e913-4db3-4c0a-906c-7221a4d1a53d",
-		"name": "Booking Tests",
-		"description": "Booking API test collection for valid, invalid, edge, and duplicate cases.",
+		"_postman_id": "a2f39faa-4935-43a3-8206-3240e8de477b",
+		"name": "Booking API Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "45061434",
-		"_collection_link": "https://basel-3230671.postman.co/workspace/basel's-Workspace~6a959c3d-763c-4cd9-8d45-160866bc1e73/collection/45061434-a219e913-4db3-4c0a-906c-7221a4d1a53d?action=share&source=collection_link&creator=45061434"
+		"_collection_link": "https://basel-3230671.postman.co/workspace/basel's-Workspace~6a959c3d-763c-4cd9-8d45-160866bc1e73/collection/45061434-a2f39faa-4935-43a3-8206-3240e8de477b?action=share&source=collection_link&creator=45061434"
 	},
 	"item": [
 		{
-			"name": "Valid Payloads",
-			"item": [
+			"name": "TC01 Valid Payload",
+			"event": [
 				{
-					"name": "Create Valid Booking",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
-									"pm.test(\"Response schema is valid\", function () {",
-									"    pm.response.to.have.jsonSchema({",
-									"        type: \"object\",",
-									"        properties: {",
-									"            id: { type: \"string\" },",
-									"            place_code: { type: \"string\" },",
-									"            place_name: { type: \"string\" },",
-									"            place_image: { type: \"string\" },",
-									"            description: { type: \"string\" }",
-									"        },",
-									"        required: [\"id\", \"place_code\", \"place_name\", \"place_image\", \"description\"]",
-									"    });",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"place_code\": \"{{$randomInt}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+						"type": "text/javascript",
+						"packages": {}
+					}
 				},
 				{
-					"name": "Create Valid Booking Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
-									"pm.test(\"Response schema is valid\", function () {",
-									"    pm.response.to.have.jsonSchema({",
-									"        type: \"object\",",
-									"        properties: {",
-									"            id: { type: \"string\" },",
-									"            place_code: { type: \"string\" },",
-									"            place_name: { type: \"string\" },",
-									"            place_image: { type: \"string\" },",
-									"            description: { type: \"string\" }",
-									"        },",
-									"        required: [\"id\", \"place_code\", \"place_name\", \"place_image\", \"description\"]",
-									"    });",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Response schema is valid\", function () {",
+							"    pm.response.to.have.jsonSchema({",
+							"        type: \"object\",",
+							"        properties: {",
+							"            id: { type: \"string\" },",
+							"            place_code: { type: \"string\" },",
+							"            place_name: { type: \"string\" },",
+							"            place_image: { type: \"string\" },",
+							"            description: { type: \"string\" },",
+							"            place_image: { type: \"string\" },",
+							"            description: { type: \"string\" },",
+							"            user_id: { type:\"string\"},",
+							"            place_id: { type:\"string\"}",
+							"        },",
+							"        required: [\"id\", \"place_code\", \"place_name\", \"place_image\", \"description\",\"user_id\",\"place_id\"]",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": \"user_{{$randomInt}}\",\n  \"place_id\": \"p{{$randomInt}}\",\n  \"createdAt\": \"2025-05-20T22:25:50.673Z\"\n\n}\n"
+				},
+				"url": "{{baseUrl}}/places"
+			},
+			"response": [
+				{
+					"name": "TC01 Valid Payload",
+					"originalRequest": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"place_code\": \"{{$randomInt}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n  \"user_id\": \"user_{{$randomInt}}\",\n  \"place_id\": \"p{{$randomInt}}\",\n  \"createdAt\": \"2025-05-20T22:25:50.673Z\"\n\n}\n"
 						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
+						"url": "{{baseUrl}}/places"
 					},
-					"response": []
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1748027185&sid=1b10b0ff-8a76-4548-befa-353fc6c6c045&s=WhHaqOd%2FX%2BX38Wwhqlv2Yde%2FMfCVa6IQl%2F6yi3uY3hc%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1748027185&sid=1b10b0ff-8a76-4548-befa-353fc6c6c045&s=WhHaqOd%2FX%2BX38Wwhqlv2Yde%2FMfCVa6IQl%2F6yi3uY3hc%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET,PUT,POST,DELETE,OPTIONS"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "X-Requested-With,Content-Type,Cache-Control,access_token"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "220"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 23 May 2025 19:06:25 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"createdAt\": \"2025-05-20T22:25:50.673Z\",\n    \"place_code\": \"398\",\n    \"place_name\": \"9309\",\n    \"place_image\": \"https://loremflickr.com/3182/1124?lock=3549731886834204\",\n    \"description\": \"East\",\n    \"id\": \"1\",\n    \"user_id\": \"user_591\",\n    \"place_id\": \"p144\"\n}"
 				}
 			]
 		},
 		{
-			"name": "Invalid Payloads",
-			"item": [
+			"name": "TC02 Empty-String Fields",
+			"event": [
 				{
-					"name": "Missing place_code",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is not 201\", function () {",
-									"    pm.expect(pm.response.code).not.eql(201);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Empty-strings should be rejected\", () => {",
+							"  pm.response.to.have.status(400);",
+							"});"
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"place_code\": \"\",\r\n \"place_name\": \"\" \r\n}"
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+						"type": "text/javascript",
+						"packages": {}
+					}
 				},
 				{
-					"name": "Invalid Field Type",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is not 201\", function () {",
-									"    pm.expect(pm.response.code).not.eql(201);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"place_code\": 12345\n}"
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
 				}
-			]
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": \"\",\n  \"place_id\": \"\",\n  \"createdAt\": \"\"\n}"
+				},
+				"url": "{{baseUrl}}/places"
+			},
+			"response": []
 		},
 		{
-			"name": "Edge Cases",
-			"item": [
+			"name": "TC03 Invalid Date format type",
+			"event": [
 				{
-					"name": "Special Characters place_code",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.expect([200,201]).to.include(pm.response.code);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 400\", () => pm.response.to.have.status(400));",
+							"pm.test(\"Error mentions date format\", () => {",
+							"  let err = pm.response.json().error || pm.response.json().message;",
+							"  pm.expect(err).to.match(/date/i);",
+							"});"
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"place_code\": \"!@#$%^&*()\"\n}"
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+						"type": "text/javascript",
+						"packages": {}
+					}
 				},
 				{
-					"name": "Large place_code",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.variables.set(\"longString\", \"x\".repeat(1000));"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.expect([200,201]).to.include(pm.response.code);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"place_code\": \"{{longString}}\"\n}"
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
 				}
-			]
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": \"user_bar\",\n  \"place_id\": \"p100\",\n  \"createdAt\": 20250601\n}"
+				},
+				"url": "{{baseUrl}}/places"
+			},
+			"response": []
 		},
 		{
-			"name": "Duplicate Bookings",
-			"item": [
+			"name": "TC04 Large & Special Characters",
+			"event": [
 				{
-					"name": "Duplicate Booking",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201 or 409\", function () {",
-									"    pm.expect([201,409]).to.include(pm.response.code);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"user_id\", \"!@#$%^&*()_+漢字٠١٢٣\");",
+							"pm.environment.set(\"place_id\", Array(301).fill(\"X\").join(\"\"));",
+							""
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"place_code\": \"duplicate_test\"\n}"
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+						"type": "text/javascript",
+						"packages": {}
+					}
 				},
 				{
-					"name": "Send Duplicate Booking Again",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201 or 409\", function () {",
-									"    pm.expect([201,409]).to.include(pm.response.code);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 2xx or 400\", () => {",
+							"  pm.expect(pm.response.code).to.be.oneOf([201, 400]);",
+							"});",
+							"if (pm.response.code === 400) {",
+							"  console.log('Payload too large or invalid chars: ', pm.response.json());",
+							"} else {",
+							"  let json = pm.response.json();",
+							"  console.log('Created with special chars:', json);",
+							"}"
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"place_code\": \"duplicate_test\"\n}"
-						},
-						"url": "{{base_url}}/v1/api/senior-qc-test/booking/places"
-					},
-					"response": []
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
-			]
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": \"{{user_id}}\",\n  \"place_id\": \"{{place_id}}\",\n  \"createdAt\": \"2025-05-20T22:26:50.673Z\"\n}"
+				},
+				"url": "{{baseUrl}}/places"
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -358,8 +298,8 @@
 	],
 	"variable": [
 		{
-			"key": "base_url",
-			"value": "https://682d014e4fae1889475497b9.mockapi.io/",
+			"key": "baseUrl",
+			"value": "https://682d014e4fae1889475497b9.mockapi.io/v1/api/senior-qc-test/booking",
 			"type": "string"
 		}
 	]

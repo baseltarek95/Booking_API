@@ -1,0 +1,5 @@
+Label,# Samples,Average,Median,90% Line,95% Line,99% Line,Min,Max,Error %,Throughput,Received KB/sec,Sent KB/sec
+Valid Post Request,7,217,155,188,567,567,144,567,0.000%,3.62131,3.90,1.01
+Get Request,1,150,150,150,150,150,150,150,0.000%,6.66667,16.13,1.33
+Debug Sampler,1,4,4,4,4,4,4,4,0.000%,250.00000,170.90,0.00
+TOTAL,9,186,150,188,567,567,4,567,0.000%,4.14365,4.90,0.99
