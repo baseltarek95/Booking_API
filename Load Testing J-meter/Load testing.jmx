@@ -25,7 +25,7 @@
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">C:/Users/btarek2/OneDrive - DXC Production/Desktop/Project/Load Testing J-meter/payloads.csv</stringProp>
+          <stringProp name="filename">C:/Users/btarek2/OneDrive - DXC Production/Desktop/ZEDEX/Booking_API/Load Testing J-meter/payloads.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -34,7 +34,7 @@
           <stringProp name="variableNames">user_id,place_id,VALID</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Invalid Missing if Controller">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Invalid Missing if Controller" enabled="true">
           <stringProp name="IfController.condition">${__groovy((vars.get(&apos;VALID&apos;)?.trim()?.equalsIgnoreCase(&apos;Missing&apos;)))}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -208,7 +208,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -245,7 +245,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -282,7 +282,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -319,7 +319,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -328,7 +328,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </Arguments>
         <hashTree/>
